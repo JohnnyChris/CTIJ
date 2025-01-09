@@ -7,6 +7,9 @@ public class EnemyScript : MonoBehaviour
     public int enemyHP = 100;
     private PointManager pointManager;
 
+    [Header("Power-Up Settings")]
+    public GameObject[] powerUpPrefabs;
+    public float dropChance = 0.5f;
 
     void Start()
     {
@@ -15,7 +18,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player Bullet" && gameObject.tag=="Enemy")
+        if (collision.gameObject.tag == "Player Bullet" && gameObject.tag == "Enemy")
         {
             enemyHP -= 50;
             Destroy(collision.gameObject);
@@ -23,7 +26,7 @@ public class EnemyScript : MonoBehaviour
             {
                 Destroy(gameObject);
                 pointManager.UpdateScore(10);
-                Destroy(collision.gameObject);
+                TryDropPowerUp();
             }
         }
         if (collision.gameObject.tag == "Player Bullet" && gameObject.tag == "Boss")
@@ -34,9 +37,17 @@ public class EnemyScript : MonoBehaviour
             {
                 Destroy(gameObject);
                 pointManager.UpdateScore(1000);
-                Destroy(collision.gameObject);
             }
         }
     }
 
+    private void TryDropPowerUp()
+    {
+        if (Random.value <= dropChance)
+        {
+            int randomIndex = Random.Range(0, powerUpPrefabs.Length);
+            GameObject powerUp = powerUpPrefabs[randomIndex];
+            Instantiate(powerUp, transform.position, Quaternion.identity);
+        }
     }
+}

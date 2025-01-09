@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ProjectileShoot : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-
-    // Start is called before the first frame update
+    public GameObject defaultProjectilePrefab; 
+    private GameObject currentProjectilePrefab; 
     void Start()
     {
-        
+        currentProjectilePrefab = defaultProjectilePrefab;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Instantiate(currentProjectilePrefab, transform.position, Quaternion.identity);
         }
     }
 
-    
+    public void ChangeProjectile(GameObject newProjectilePrefab)
+    {
+        currentProjectilePrefab = newProjectilePrefab;
+    }
 }

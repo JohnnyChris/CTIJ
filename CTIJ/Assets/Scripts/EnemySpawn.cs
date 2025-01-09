@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -10,15 +8,19 @@ public class EnemySpawn : MonoBehaviour
     public GameObject boss;
     private GameObject currentShipInstance;
     private GameObject currentBossInstance;
-    private int bossCount=0;
+    private int bossCount = 0;
     private bool bossSpawned = false;
-    // Start is called before the first frame update
+
+    [Header("Cheat Code Settings")]
+    public string cheatCode = "stelian"; // The sequence of letters for the cheat code
+    public GameObject newBossPrefab; // The new boss prefab to spawn after the cheat code is entered
+    private string inputBuffer = ""; // Tracks the player's input
+
     void Start()
     {
         SpawnShip();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentShipInstance != null && currentShipInstance.transform.childCount == 0 && !bossSpawned)
@@ -26,13 +28,19 @@ public class EnemySpawn : MonoBehaviour
             Destroy(currentShipInstance);
             SpawnShip();
             bossCount++;
-        } 
+        }
 
         if (bossCount == 2 && !bossSpawned)
         {
             Destroy(currentShipInstance);
             SpawnBoss();
             bossSpawned = true;
+        }
+
+        // Check for cheat code input
+        if (bossSpawned && currentBossInstance != null)
+        {
+            CheckCheatCodeInput();
         }
     }
 
@@ -46,4 +54,35 @@ public class EnemySpawn : MonoBehaviour
         currentBossInstance = Instantiate(boss, transform.position, Quaternion.identity);
     }
 
+    void CheckCheatCodeInput()
+    {
+        foreach (char c in Input.inputString)
+        {
+            inputBuffer += c;
+
+            // Keep the buffer length limited to the cheat code length
+            if (inputBuffer.Length > cheatCode.Length)
+            {
+                inputBuffer = inputBuffer.Substring(inputBuffer.Length - cheatCode.Length);
+            }
+
+            // Check if the buffer matches the cheat code
+            if (inputBuffer == cheatCode)
+            {
+                ApplyBossTransformation();
+                inputBuffer = ""; // Reset the buffer
+            }
+        }
+    }
+
+    void ApplyBossTransformation()
+    {
+        // Destroy the current boss and spawn a new one
+        Destroy(currentBossInstance);
+
+        // Instantiate the new boss prefab
+        currentBossInstance = Instantiate(newBossPrefab, transform.position, Quaternion.identity);
+
+        Debug.Log("Boss transformed!");
+    }
 }

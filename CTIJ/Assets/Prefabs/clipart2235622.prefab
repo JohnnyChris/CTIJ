@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHP: 100
+  powerUpPrefabs:
+  - {fileID: 7806867289422802133, guid: d9a54c90e4b83984a87e1a457d6ee289, type: 3}
+  dropChance: 0.5

@@ -6,15 +6,18 @@ public class ShipMovement : MonoBehaviour
 {
     public float moveSpeed = 5;
 
+    //private SpriteRenderer shipSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //shipSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //shipSprite.sprite = 
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 

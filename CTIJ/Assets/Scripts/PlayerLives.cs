@@ -7,17 +7,29 @@ public class PlayerLives : MonoBehaviour
 {
     public int lives = 3;
     public Image[] livesUI;
+    public SpriteRenderer spriteRenderer; 
+    public Sprite[] damageSprites; 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateLivesUI()
     {
-        
+        for (int i = 0; i < livesUI.Length; i++)
+        {
+            livesUI[i].enabled = i < lives;
+        }
+
+        if (lives > 0 && lives <= damageSprites.Length)
+        {
+            spriteRenderer.sprite = damageSprites[lives - 1];
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,17 +38,9 @@ public class PlayerLives : MonoBehaviour
         {
             Destroy(collision.collider.gameObject);
             lives -= 1;
-            for(int i=0;i<livesUI.Length;i++) {
-                if (i < lives)
-                {
-                    livesUI[i].enabled = true;
-                }
-                else {
-                    livesUI[i].enabled=false;
-                }
-            }
+            UpdateLivesUI();
             if (lives <= 0)
-            { 
+            {
                 Destroy(gameObject);
             }
         }
@@ -48,17 +52,7 @@ public class PlayerLives : MonoBehaviour
         {
             Destroy(collision.gameObject);
             lives -= 1;
-            for (int i = 0; i < livesUI.Length; i++)
-            {
-                if (i < lives)
-                {
-                    livesUI[i].enabled = true;
-                }
-                else
-                {
-                    livesUI[i].enabled = false;
-                }
-            }
+            UpdateLivesUI();
             if (lives <= 0)
             {
                 Destroy(gameObject);
