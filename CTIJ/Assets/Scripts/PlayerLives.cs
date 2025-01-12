@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,15 +7,21 @@ public class PlayerLives : MonoBehaviour
 {
     public int lives = 3;
     public Image[] livesUI;
-    public SpriteRenderer spriteRenderer; 
-    public Sprite[] damageSprites; 
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] damageSprites;
+    public GameObject gameOverScreen;
+    private bool isGameOver = false;
 
-    
     void Start()
     {
         if (spriteRenderer == null)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(false);
         }
     }
 
@@ -37,12 +43,7 @@ public class PlayerLives : MonoBehaviour
         if (collision.collider.gameObject.tag == "Enemy")
         {
             Destroy(collision.collider.gameObject);
-            lives -= 1;
-            UpdateLivesUI();
-            if (lives <= 0)
-            {
-                Destroy(gameObject);
-            }
+            TakeDamage();
         }
     }
 
@@ -51,12 +52,29 @@ public class PlayerLives : MonoBehaviour
         if (collision.gameObject.tag == "Enemy Projectile")
         {
             Destroy(collision.gameObject);
-            lives -= 1;
-            UpdateLivesUI();
-            if (lives <= 0)
-            {
-                Destroy(gameObject);
-            }
+            TakeDamage();
+        }
+    }
+
+    private void TakeDamage()
+    {
+        lives -= 1;
+        UpdateLivesUI();
+
+        if (lives <= 0 && !isGameOver)
+        {
+            isGameOver = true;
+            ShowGameOverScreen();
+            Destroy(gameObject);
+        }
+    }
+
+    private void ShowGameOverScreen()
+    {
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
