@@ -30,7 +30,7 @@ public class EnemySpawn : MonoBehaviour
             bossCount++;
         }
 
-        if (bossCount == 2 && !bossSpawned)
+        if (bossCount == 3 && !bossSpawned)
         {
             Destroy(currentShipInstance);
             SpawnBoss();

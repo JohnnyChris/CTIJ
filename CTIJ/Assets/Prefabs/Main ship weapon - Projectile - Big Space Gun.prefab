@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7806867289422802133
+--- !u!1 &1151532751775490695
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3177671558966932078}
-  - component: {fileID: 3824051186302525240}
-  - component: {fileID: 4712238792735876027}
-  - component: {fileID: 8365789835368980461}
+  - component: {fileID: 8691549929478490607}
+  - component: {fileID: 4109552993083955024}
+  - component: {fileID: 4853906473969997060}
+  - component: {fileID: 7811020040775368753}
   m_Layer: 0
-  m_Name: "\u2014Pngtree\u2014pixel art gift box icon_8532664"
-  m_TagString: Untagged
+  m_Name: Main ship weapon - Projectile - Big Space Gun
+  m_TagString: Player Bullet2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3177671558966932078
+--- !u!4 &8691549929478490607
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806867289422802133}
+  m_GameObject: {fileID: 1151532751775490695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.54, y: -1.39, z: 0}
+  m_LocalPosition: {x: 918.7245, y: 419.6596, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3824051186302525240
+--- !u!212 &4109552993083955024
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806867289422802133}
+  m_GameObject: {fileID: 1151532751775490695}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,24 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7160ddbeccab00418d356face1320c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6047290dab80b8f499f0d9c7f317607a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 12, y: 12}
+  m_Size: {x: 0.3, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4712238792735876027
+--- !u!61 &4853906473969997060
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806867289422802133}
+  m_GameObject: {fileID: 1151532751775490695}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -118,33 +118,29 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013195276, y: 0.028040111}
+  m_Offset: {x: -0.009765625, y: 0.0069732666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 1.2}
-    newSize: {x: 12, y: 12}
+    oldSize: {x: 0.3, y: 0.32}
+    newSize: {x: 0.3, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1340232, y: 1.0251616}
+  m_Size: {x: 0.16699219, y: 0.17385864}
   m_EdgeRadius: 0
---- !u!114 &8365789835368980461
+--- !u!114 &7811020040775368753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806867289422802133}
+  m_GameObject: {fileID: 1151532751775490695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca60e1ad1edbd294181018e6e09bab1a, type: 3}
+  m_Script: {fileID: 11500000, guid: d35e17c71c093c64d8bdcfa416b95b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  descendSpeed: 2
-  newProjectilePrefabs:
-  - {fileID: 3034318500393356893, guid: b0447c87f46cc8446bec27f689db7eb4, type: 3}
-  - {fileID: 8851674829423159686, guid: 8e31ad3fc69574b43a81308192afabd6, type: 3}
-  - {fileID: 1151532751775490695, guid: f962827cd731b8042bfec1746c3d8398, type: 3}
+  moveSpeed: 10

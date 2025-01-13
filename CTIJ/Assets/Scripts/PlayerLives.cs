@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -61,20 +62,11 @@ public class PlayerLives : MonoBehaviour
         lives -= 1;
         UpdateLivesUI();
 
-        if (lives <= 0 && !isGameOver)
+        if (lives <= 0)
         {
-            isGameOver = true;
-            ShowGameOverScreen();
             Destroy(gameObject);
+            SceneManager.LoadSceneAsync(3);
         }
     }
 
-    private void ShowGameOverScreen()
-    {
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(true);
-            Time.timeScale = 0f;
-        }
-    }
 }

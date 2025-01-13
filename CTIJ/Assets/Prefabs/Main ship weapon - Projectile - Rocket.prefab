@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2923815665520530739}
   m_Layer: 0
   m_Name: Main ship weapon - Projectile - Rocket
-  m_TagString: Player Bullet
+  m_TagString: Player Bullet4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

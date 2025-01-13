@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpMovement : MonoBehaviour
 {
     public float descendSpeed = 2.0f; // Speed at which the power-up descends
-    public GameObject newProjectilePrefab; // The new projectile prefab to assign to the player
+    public List<GameObject> newProjectilePrefabs; // List of new projectile prefabs to assign to the player
 
     void Update()
     {
@@ -26,9 +26,11 @@ public class PowerUpMovement : MonoBehaviour
         {
             // Change the player's projectile
             ProjectileShoot shooter = collision.gameObject.GetComponent<ProjectileShoot>();
-            if (shooter != null)
+            if (shooter != null && newProjectilePrefabs.Count > 0)
             {
-                shooter.ChangeProjectile(newProjectilePrefab);
+                // Select a random projectile prefab from the list
+                GameObject selectedProjectile = newProjectilePrefabs[Random.Range(0, newProjectilePrefabs.Count)];
+                shooter.ChangeProjectile(selectedProjectile);
             }
 
             // Destroy the power-up after applying its effect

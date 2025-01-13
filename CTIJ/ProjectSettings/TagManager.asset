@@ -9,6 +9,10 @@ TagManager:
   - Enemy Projectile
   - Boss
   - Player Bullet
+  - Player Bullet2
+  - Player Bullet3
+  - Player Bullet4
+  - Boundary2
   layers:
   - Default
   - TransparentFX
